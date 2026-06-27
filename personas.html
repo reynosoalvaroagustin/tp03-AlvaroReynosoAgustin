@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personas - Ejercicio 2</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formulario {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .formulario h2 { font-size: 18px; margin-bottom: 20px; color: #2c3e50; }
+
+    .fila-campos {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .campo { display: flex; flex-direction: column; flex: 1; min-width: 130px; }
+    .campo label { font-size: 13px; color: #555; margin-bottom: 5px; }
+    .campo input {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+    }
+    .campo input:focus { border-color: #2980b9; }
+
+    .mensaje-error { color: #e74c3c; font-size: 13px; margin-bottom: 10px; display: none; }
+
+    .imc-bajo      { color: #3498db; font-weight: bold; }
+    .imc-normal    { color: #27ae60; font-weight: bold; }
+    .imc-sobrepeso { color: #f39c12; font-weight: bold; }
+    .imc-obesidad  { color: #e74c3c; font-weight: bold; }
+
+    .titulo-tabla { font-size: 18px; color: #2c3e50; margin-bottom: 12px; }
+    .sin-datos {
+      text-align: center; color: #999;
+      padding: 20px; background-color: white;
+      border-radius: 6px; font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ejercicio 2 - Personas</h1>
+    <p>Formulario con tabla dinámica y cálculo de IMC</p>
+  </header>
+
+  <nav>
+    <a href="index.html">← Inicio</a>
+    <a href="flexbox.html">Flexbox</a>
+    <a href="personas.html">Personas</a>
+    <a href="react.html">React</a>
+  </nav>
+
+  <main>
+    <div class="formulario">
+      <h2>Agregar persona</h2>
+      <div class="fila-campos">
+        <div class="campo">
+          <label>Nombre</label>
+          <input type="text" id="nombre" placeholder="Ej: Juan">
+        </div>
+        <div class="campo">
+          <label>Apellido</label>
+          <input type="text" id="apellido" placeholder="Ej: Pérez">
+        </div>
+        <div class="campo">
+          <label>Edad</label>
+          <input type="number" id="edad" placeholder="Ej: 25" min="0">
+        </div>
+        <div class="campo">
+          <label>Altura (m)</label>
+          <input type="number" id="altura" placeholder="Ej: 1.75" step="0.01" min="0">
+        </div>
+        <div class="campo">
+          <label>Peso (kg)</label>
+          <input type="number" id="peso" placeholder="Ej: 70" min="0">
+        </div>
+      </div>
+      <p class="mensaje-error" id="error">Completá todos los campos correctamente.</p>
+      <button class="btn-primary" onclick="agregarPersona()">Agregar persona</button>
+    </div>
+
+    <h2 class="titulo-tabla">Lista de personas</h2>
+    <div id="contenedor-tabla">
+      <p class="sin-datos">Todavía no hay personas cargadas.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Alvaro Reynoso - 2026</p>
+  </footer>
+
+  <script>
+    var personas = [];
+    /* Las funciones JS se agregan en el próximo commit */
+    mostrarTabla();
+  </script>
+
+</body>
+</html>
