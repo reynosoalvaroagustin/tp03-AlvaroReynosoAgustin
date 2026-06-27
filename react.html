@@ -40,7 +40,7 @@
   <main>
     <div id="app"></div>
   </main>
-  <footer><p>Actividad práctica - Desarrollo Web 2025</p></footer>
+  <footer><p>Alvaro Reynoso - 2026</p></footer>
 
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -101,7 +101,69 @@
       );
     }
 
-    /* TablaPersonas y App se agregan en el próximo commit */
+    function FilaPersona({ persona, indice, onEliminar }) {
+  var imc = calcularIMC(persona.peso, persona.altura);
+  var cat = categoriaIMC(imc);
+
+  return (
+    <tr>
+      <td>{persona.nombre}</td>
+      <td>{persona.apellido}</td>
+      <td>{persona.edad}</td>
+      <td>{persona.altura} m</td>
+      <td>{persona.peso} kg</td>
+      <td>{imc}</td>
+      <td className={cat.clase}>{cat.texto}</td>
+      <td><button className="btn-danger" onClick={() => onEliminar(indice)}>Quitar</button></td>
+    </tr>
+  );
+}
+
+function TablaPersonas({ personas, onEliminar }) {
+  if (personas.length === 0) {
+    return <p className="sin-datos">Todavía no hay personas cargadas.</p>;
+  }
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th><th>Apellido</th><th>Edad</th>
+          <th>Altura</th><th>Peso</th><th>IMC</th>
+          <th>Categoría</th><th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        {personas.map((p, i) => (
+          <FilaPersona key={i} persona={p} indice={i} onEliminar={onEliminar} />
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function App() {
+  const [personas, setPersonas] = React.useState([]);
+
+  function agregarPersona(persona) {
+    setPersonas([...personas, persona]);
+  }
+
+  function eliminarPersona(indice) {
+    setPersonas(personas.filter((p, i) => i !== indice));
+  }
+
+  return (
+    <div>
+      <Formulario onAgregar={agregarPersona} />
+      <h2 className="titulo-tabla">Lista de personas</h2>
+      <TablaPersonas personas={personas} onEliminar={eliminarPersona} />
+    </div>
+  );
+}
+
+var root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(<App />);
 
   </script>
 </body>
