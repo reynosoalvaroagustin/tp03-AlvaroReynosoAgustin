@@ -103,7 +103,85 @@
 
   <script>
     var personas = [];
-    /* Las funciones JS se agregan en el próximo commit */
+    function calcularIMC(peso, altura) {
+  var imc = peso / (altura * altura);
+  return Math.round(imc * 10) / 10;
+}
+
+function categoriaIMC(imc) {
+  if (imc < 18.5) return { texto: "Bajo peso",  clase: "imc-bajo" };
+  if (imc < 25)   return { texto: "Normal",      clase: "imc-normal" };
+  if (imc < 30)   return { texto: "Sobrepeso",   clase: "imc-sobrepeso" };
+  return               { texto: "Obesidad",    clase: "imc-obesidad" };
+}
+
+function mostrarTabla() {
+  var contenedor = document.getElementById("contenedor-tabla");
+
+  if (personas.length === 0) {
+    contenedor.innerHTML = "<p class='sin-datos'>Todavía no hay personas cargadas.</p>";
+    return;
+  }
+
+  var html = "<table><tr><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Altura</th><th>Peso</th><th>IMC</th><th>Categoría</th><th>Acción</th></tr>";
+
+  for (var i = 0; i < personas.length; i++) {
+    var p = personas[i];
+    var imc = calcularIMC(p.peso, p.altura);
+    var cat = categoriaIMC(imc);
+
+    html += "<tr>";
+    html += "<td>" + p.nombre + "</td>";
+    html += "<td>" + p.apellido + "</td>";
+    html += "<td>" + p.edad + "</td>";
+    html += "<td>" + p.altura + " m</td>";
+    html += "<td>" + p.peso + " kg</td>";
+    html += "<td>" + imc + "</td>";
+    html += "<td class='" + cat.clase + "'>" + cat.texto + "</td>";
+    html += "<td><button class='btn-danger' onclick='eliminarPersona(" + i + ")'>Quitar</button></td>";
+    html += "</tr>";
+  }
+
+  html += "</table>";
+  contenedor.innerHTML = html;
+}
+
+function agregarPersona() {
+  var nombre   = document.getElementById("nombre").value.trim();
+  var apellido = document.getElementById("apellido").value.trim();
+  var edad     = document.getElementById("edad").value;
+  var altura   = document.getElementById("altura").value;
+  var peso     = document.getElementById("peso").value;
+  var error    = document.getElementById("error");
+
+  if (!nombre || !apellido || !edad || !altura || !peso) {
+    error.style.display = "block";
+    return;
+  }
+
+  error.style.display = "none";
+
+  personas.push({
+    nombre:   nombre,
+    apellido: apellido,
+    edad:     parseInt(edad),
+    altura:   parseFloat(altura),
+    peso:     parseFloat(peso)
+  });
+
+  document.getElementById("nombre").value   = "";
+  document.getElementById("apellido").value = "";
+  document.getElementById("edad").value     = "";
+  document.getElementById("altura").value   = "";
+  document.getElementById("peso").value     = "";
+
+  mostrarTabla();
+}
+
+function eliminarPersona(indice) {
+  personas.splice(indice, 1);
+  mostrarTabla();
+}
     mostrarTabla();
   </script>
 
