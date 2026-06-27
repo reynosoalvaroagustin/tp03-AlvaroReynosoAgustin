@@ -6,34 +6,7 @@
   <title>Inicio</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 30px 20px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.card .icono { font-size: 40px; margin-bottom: 15px; }
-.card h2 { font-size: 18px; margin-bottom: 10px; color: #2c3e50; }
-.card p { font-size: 13px; color: #666; line-height: 1.5; }
+    
     .bienvenida {
       background-color: white;
       border-radius: 8px;
@@ -77,7 +50,25 @@
       </p>
     </div>
 
-  
+  <div class="cards-container">
+  <a href="flexbox.html" class="card">
+    <div class="icono">📦</div>
+    <h2>Ejercicio 1 - Flexbox</h2>
+    <p>Tarjetas generadas con JavaScript y organizadas con Flexbox. Incluye botón para ordenar.</p>
+  </a>
+
+  <a href="personas.html" class="card">
+    <div class="icono">👥</div>
+    <h2>Ejercicio 2 - Personas</h2>
+    <p>Formulario para cargar personas. Muestra los datos en una tabla con cálculo de IMC.</p>
+  </a>
+
+  <a href="react.html" class="card">
+    <div class="icono">⚛️</div>
+    <h2>Ejercicio 3 - React</h2>
+    <p>La misma funcionalidad del ejercicio 2, pero desarrollada con componentes de React.</p>
+  </a>
+</div>
 
   </main>
 

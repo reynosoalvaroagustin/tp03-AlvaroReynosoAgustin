@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox - Ejercicio 1</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .controles {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .contenedor-tarjetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+
+    .tarjeta {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .tarjeta:hover { transform: scale(1.03); }
+    .tarjeta .emoji { font-size: 36px; margin-bottom: 10px; }
+    .tarjeta h3 { font-size: 16px; margin-bottom: 6px; color: #2c3e50; }
+    .tarjeta p { font-size: 13px; color: #666; }
+    .tarjeta .precio { font-size: 18px; font-weight: bold; color: #27ae60; margin-top: 10px; }
+    .tarjeta.destacada { border: 2px solid #f39c12; background-color: #fffbf0; }
+
+    .titulo-seccion { font-size: 20px; margin-bottom: 15px; color: #2c3e50; }
+
+    .info-box {
+      background-color: #eaf2fb;
+      border-left: 4px solid #2980b9;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ejercicio 1 - Flexbox</h1>
+    <p>Tarjetas generadas con JavaScript y organizadas con Flexbox</p>
+  </header>
+
+  <nav>
+    <a href="index.html">← Inicio</a>
+    <a href="flexbox.html">Flexbox</a>
+    <a href="personas.html">Personas</a>
+    <a href="react.html">React</a>
+  </nav>
+
+  <main>
+    <div class="info-box">
+      Las tarjetas se generan desde un arreglo en JavaScript.
+      Podés ordenarlas por precio o resaltar las más caras.
+    </div>
+
+    <div class="controles">
+      <button class="btn-primary" onclick="ordenarPorPrecio()">Ordenar por precio</button>
+      <button class="btn-primary" onclick="destacarCaros()">Destacar los más caros</button>
+      <button class="btn-primary" onclick="restaurar()">Restaurar orden</button>
+    </div>
+
+    <h2 class="titulo-seccion">Productos</h2>
+    <div class="contenedor-tarjetas" id="contenedor"></div>
+  </main>
+
+  <footer>
+    <p>Alvaro Reynoso - 2026</p>
+  </footer>
+
+  <script>
+    var productos = [
+      { nombre: "Teclado",     emoji: "⌨️", precio: 3500,  categoria: "Periférico" },
+      { nombre: "Mouse",       emoji: "🖱️", precio: 1800,  categoria: "Periférico" },
+      { nombre: "Monitor",     emoji: "🖥️", precio: 45000, categoria: "Pantalla" },
+      { nombre: "Auriculares", emoji: "🎧", precio: 8000,  categoria: "Audio" },
+      { nombre: "Webcam",      emoji: "📷", precio: 5500,  categoria: "Video" },
+      { nombre: "Micrófono",   emoji: "🎙️", precio: 12000, categoria: "Audio" },
+      { nombre: "Disco SSD",   emoji: "💾", precio: 22000, categoria: "Almacenamiento" },
+      { nombre: "Memoria RAM", emoji: "🧠", precio: 18000, categoria: "Hardware" }
+    ];
+
+    .
+
+    mostrarTarjetas(productos);
+  </script>
+
+</body>
+</html>
